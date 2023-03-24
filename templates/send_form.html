@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>HelpDesk</title>
+    {% endblock title %}
+    {% block styles %}
+        <link type="text/css" rel="stylesheet" href={% static "css/send_form.css" %}>
+    {% endblock styles %}
+</head>
+<body>
+{% block content %}
+    <div class="form-background">
+        <h1 class="form-name">С каким вопросом вам помочь ?</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>
