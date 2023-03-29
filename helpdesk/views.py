@@ -1,6 +1,6 @@
 import http
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
@@ -17,7 +17,12 @@ def send_form(request):
                 category=ticket_form.cleaned_data['choices']
             )
             new_user.save()
+            return redirect('send-success')
     else:
         user_form = FUser()
         ticket_form = FTicket()
     return render(request, 'send_form.html', {'user_form': user_form, 'ticket_form': ticket_form})
+
+
+def send_success(request):
+    return render(request, 'send_success.html')
