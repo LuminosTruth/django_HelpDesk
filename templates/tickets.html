@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>HelpDesk - Tickets</title>
+    {% endblock title %}
+    {% block styles %}
+        <link type="text/css" rel="stylesheet" href={% static "css/tickets.css" %}>
+    {% endblock styles %}
+</head>
+<body>
+{% block content %}
+    <div class="tickets-background">
+        <div class="tickets-header">
+            <h1 class="tickets-header-text">Имя</h1>
+            <h1 class="tickets-header-text">Отдел</h1>
+            <h1 class="tickets-header-text">Телефон</h1>
+            <h1 class="tickets-header-text">Категория</h1>
+            <h1 class="tickets-header-text">Создан</h1>
+        </div>
+        {% for ticket in  tickets %}
+            <div class="ticket">
+                <h1 class="ticket-text">{{ ticket.username }}</h1>
+                <h1 class="ticket-text">{{ ticket.departament }}</h1>
+                <h1 class="ticket-text">{{ ticket.phone }}</h1>
+                <h1 class="ticket-text">{{ ticket.category }}</h1>
+                <h1 class="ticket-text">{{ ticket.created_at }}</h1>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+</body>
+</html>

@@ -26,3 +26,7 @@ def send_form(request):
 
 def send_success(request):
     return render(request, 'send_success.html')
+
+
+def tickets(request):
+    return render(request, 'tickets.html', {'tickets': TicketModel.objects.all()})
